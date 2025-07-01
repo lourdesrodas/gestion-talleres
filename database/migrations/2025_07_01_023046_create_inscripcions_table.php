@@ -11,16 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('personas', function (Blueprint $table) {
+        Schema::create('inscripcions', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->string('nombre');
-            $table->string('apellido');
-            $table->string('dni')->unique();
-            $table->string('telefono')->nullable();
-            $table->text('correo')->nullable();
-            // Clave foránea con relación a tipo_personas
+            //clave foraneas
             $table->foreignId('tipo_persona_id')->constrained('tipo_personas');
+            $table->foreignId('tallers_id')->constrained('talleres');
         });
     }
 
@@ -29,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('personas');
+        Schema::dropIfExists('inscripcions');
     }
 };

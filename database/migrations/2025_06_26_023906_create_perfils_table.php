@@ -11,12 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tipo_personas', function (Blueprint $table) {
+        Schema::create('perfils', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->string('legajo')->unique();
-            $table->string('password');
-            $table->boolean('estado')->default(true);
+            $table->string('Descripción');
+            $table->string('Observación');
         });
     }
 
@@ -25,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tipo_personas');
+        Schema::dropIfExists('perfils');
     }
 };
